@@ -1,16 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import { toast } from "react-toastify";
+
 import Logo from "../assets/Wechat-logo-removebg.png";
 import "../styles/Signup.css";
 function Signup() {
+  const [values, setvalues] = useState({
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert("form");
+    handleValidation();
+  };
+  const handleValidation = (event) => {
+    const { username, email, password, confirmPassword } = values;
+
+    if (password !== confirmPassword) {
+      toast.error("Password not match", { position: "top-right" });
+    }
   };
 
   const handleChange = (event) => {
-    console.log("change handeld");
+    console.log(values);
+    setvalues({ ...values, [event.target.name]: event.target.value });
   };
   return (
     <>
@@ -26,7 +42,7 @@ function Signup() {
               <input
                 className="form-control"
                 type={"text"}
-                name="Username"
+                name="username"
                 placeholder="username"
                 onChange={(e) => handleChange(e)}
               />
@@ -61,7 +77,11 @@ function Signup() {
               />
             </div>
 
-            <button type="submit" className="btn btn-primary">
+            <button
+              type="submit"
+              className="btn btn-primary"
+              onClick={handleSubmit}
+            >
               Create User
             </button>
             <span>
