@@ -22,7 +22,6 @@ function Login() {
       console.log("work ?");
       const { data } = await axios.post(loginRoute, {
         username,
-        email,
         password,
       });
       if (data.status === false) {
@@ -69,6 +68,7 @@ function Login() {
                 type={"text"}
                 name="username"
                 placeholder="username"
+                min={3}
                 onChange={(e) => handleChange(e)}
               />
             </div>
