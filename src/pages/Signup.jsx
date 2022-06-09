@@ -1,10 +1,13 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import Logo from "../assets/Wechat-logo-removebg.png";
 import "../styles/Signup.css";
+import { signupRoute } from "../utils/APIRoutes";
 function Signup() {
+  const navigate = useNavigate();
   const [values, setvalues] = useState({
     username: "",
     email: "",
@@ -12,16 +15,42 @@ function Signup() {
     confirmPassword: "",
   });
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    handleValidation();
+
+    if (handleValidation()) {
+      const { username, email, password, confirmPassword } = values;
+      console.log("work ?");
+      const { data } = await axios.post(signupRoute, {
+        username,
+        email,
+        password,
+      });
+      if (data.status === false) {
+        return toast.error(data.msg);
+      }
+      if (data.status === true) {
+        localStorage.setItem("chat-app-user", JSON.stringify(data.user));
+      }
+
+      navigate("/");
+    }
   };
+
   const handleValidation = (event) => {
     const { username, email, password, confirmPassword } = values;
 
     if (password !== confirmPassword) {
       toast.error("Password not match", { position: "top-right" });
+      return false;
+    } else if (username.length < 3 || username.length > 15) {
+      toast.error("Username length must be between 3 and 15 charecters");
+      return false;
+    } else if (email === "") {
+      toast.error("Email can't be empty");
+      return false;
     }
+    return true;
   };
 
   const handleChange = (event) => {
