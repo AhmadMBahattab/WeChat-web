@@ -1,6 +1,10 @@
 img {
   height: 8rem;
 }
+.titleContainer h1 {
+  color: black;
+}
+
 .avatarsContainer {
   display: flex;
   justify-content: center;
@@ -11,6 +15,7 @@ img {
   width: 100vw;
 }
 .loader {
+    
 }
 .avatars {
   display: flex;
@@ -20,13 +25,13 @@ img {
   border: 0.4rem solid transparent;
   padding: 10px;
   border-radius: 0.4rem;
-  width: 100px;
+  width: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: 0.5s ease-in-out;
 }
 .selected {
-  border: 0.4rem solid red;
-  border-radius: 0.4rem;
+  border: 0.4rem solid skyblue;
+  border-radius: 75px;
 }
