@@ -15,6 +15,12 @@ function Signup() {
     confirmPassword: "",
   });
 
+  useEffect(() => {
+    if (localStorage.getItem("chat-app-user")) {
+      navigate("/");
+    }
+  }, []);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
