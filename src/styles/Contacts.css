@@ -1,0 +1,28 @@
+img {
+  height: 2rem;
+}
+
+.contactsContainer {
+  display: grid;
+  grid-template-columns: 10% 75% 10%;
+  overflow: hidden;
+  background-color: aliceblue;
+}
+.brandContacts {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.contacts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+  gap: 0.8rem;
+}
+.contacts img {
+}
+.contact {
+  background-color: rgb(193, 121, 13);
+}
