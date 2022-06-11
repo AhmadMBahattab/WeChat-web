@@ -5,11 +5,13 @@ import { toast } from "react-toastify";
 import { allUsersRoute } from "../utils/APIRoutes";
 import Contacts from "../components/Contacts";
 import "../styles/Chat.css";
+import Welcome from "../components/Welcome";
 
 function Chat() {
   const navigate = useNavigate();
   const [contacts, setcontacts] = useState([]);
   const [currentUser, setcurrentUser] = useState(null);
+  const [currentChat, setcurrentChat] = useState(null);
 
   useEffect(() => {
     const getCurrentUser = async () => {
@@ -41,10 +43,18 @@ function Chat() {
     getContacts();
   }, [currentUser]);
 
+  const handleChatChange = (chat) => {
+    setcurrentChat(chat);
+  };
   return (
     <div className="chatContainer">
       <div className="container">
-        <Contacts contacts={contacts} currentUser={currentUser} />
+        <Contacts
+          contacts={contacts}
+          currentUser={currentUser}
+          changeChat={handleChatChange}
+        />
+        <Welcome currentUser={currentUser} />
       </div>
     </div>
   );

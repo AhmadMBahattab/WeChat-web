@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Logo from "../assets/Wechat-logo-removebg.png";
 import "../styles/Contacts.css";
 
-function Contacts({ contacts, currentUser }) {
+function Contacts({ contacts, currentUser, changeChat }) {
   const [currentUserName, setcurrentUserName] = useState(undefined);
   const [currentUserImage, setcurrentUserImage] = useState(undefined);
   const [currentSelected, setcurrentSelected] = useState(undefined);
@@ -14,7 +14,10 @@ function Contacts({ contacts, currentUser }) {
     }
   }, [currentUser]);
 
-  const changeCurrentUser = (index, contact) => {};
+  const changeCurrentUser = (index, contact) => {
+    setcurrentSelected(index);
+    changeChat(contact);
+  };
 
   console.log("From componrnts :", currentUser);
   return (
@@ -23,28 +26,32 @@ function Contacts({ contacts, currentUser }) {
         <div className="contactsContainer">
           <div className="brandContacts">
             <img src={Logo} alt="Logo" />
-            <h3>WeChat</h3>
           </div>
+
           <div className="contacts">
             {contacts.map((contact, index) => (
-              <div
-                className={`contact ${
-                  index === currentSelected ? "selected" : ""
-                }`}
-                key={index}
-              >
-                <div className="avatar">
-                  <img
-                    src={`data:image/svg+xml;base64,${contact.avatarImage}`}
-                    alt="avatar"
-                  />
+              <>
+                <div
+                  className={`contact ${
+                    index === currentSelected ? "selectedChat" : ""
+                  }`}
+                  key={index}
+                  onClick={() => changeCurrentUser(index, contact)}
+                >
+                  <div className="avatar">
+                    <img
+                      src={`data:image/svg+xml;base64,${contact.avatarImage}`}
+                      alt="avatar"
+                    />
+                  </div>
+                  <div className="username">
+                    <h3>{contact.username}</h3>
+                  </div>
                 </div>
-                <div className="username">
-                  <h3>{contact.username}</h3>
-                </div>
-              </div>
+              </>
             ))}
           </div>
+
           <div className="currentUser">
             <div className="avatar">
               <img
