@@ -60,7 +60,7 @@ function Contacts({ contacts, currentUser, changeChat }) {
               />
             </div>
             <div className="username">
-              <h1>{currentUserName}</h1>
+              <h2> <b>{currentUserName}</b></h2>
             </div>
           </div>
         </div>

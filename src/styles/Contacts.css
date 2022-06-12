@@ -3,7 +3,7 @@
   display: grid;
   justify-content: space-between;
   grid-template-columns: 100%;
-  border-right-color: gray;
+  border-right-color: rgb(194, 194, 194);
   border-right-width: 1px;
   border-right-style: solid;
 }
@@ -13,13 +13,13 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 10px;
-  border-bottom-color: gray;
+  border-bottom-color: rgb(194, 194, 194);
   border-bottom-width: 1px;
   border-bottom-style: solid;
 }
 .brandContacts img {
   height: 120px;
-  width: 250px;
+  width: 80%;
 }
 
 .contacts {
@@ -41,12 +41,12 @@
   align-items: center;
   display: flex;
   justify-content: center;
-  border-top-color: gray;
+  border-top-color: rgb(194, 194, 194);
   border-top-width: 1px;
   border-top-style: solid;
 }
 .currentUser img {
-  height: 100px;
+  height: 90px;
 }
 .selectedChat {
   background-color: rgb(225, 225, 225);

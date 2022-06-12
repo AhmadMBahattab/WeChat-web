@@ -14,7 +14,7 @@ img {
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(235, 235, 235);
 }
 
 .brand {
@@ -27,7 +27,7 @@ img {
   background-color: rgb(255, 255, 255);
   border-radius: 20px;
   border-width: 1px;
-  border-color: gray;
+  border-color: rgb(177, 177, 177);
   border-style: solid;
   /* box-shadow: 20cm;
   box-sizing: border-box; */
