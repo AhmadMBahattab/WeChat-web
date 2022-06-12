@@ -4,14 +4,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { allUsersRoute } from "../utils/APIRoutes";
 import Contacts from "../components/Contacts";
-import "../styles/Chat.css";
 import Welcome from "../components/Welcome";
+import ChatContainer from "../components/ChatContainer";
+import "../styles/Chat.css";
 
 function Chat() {
   const navigate = useNavigate();
   const [contacts, setcontacts] = useState([]);
   const [currentUser, setcurrentUser] = useState(null);
-  const [currentChat, setcurrentChat] = useState(null);
+  const [currentChat, setcurrentChat] = useState(undefined);
 
   useEffect(() => {
     const getCurrentUser = async () => {
@@ -54,7 +55,14 @@ function Chat() {
           currentUser={currentUser}
           changeChat={handleChatChange}
         />
-        <Welcome currentUser={currentUser} />
+        {currentChat === undefined ? (
+          <Welcome currentUser={currentUser} />
+        ) : (
+          <ChatContainer currentChat={currentChat} />
+          // <div>
+          //   <h1>cHAT PRESSED</h1>
+          // </div>
+        )}
       </div>
     </div>
   );

@@ -1,0 +1,25 @@
+.singleChatContainer {
+  /* background-color: rgb(101, 32, 32); */
+}
+
+.chatHeader {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom-color: rgb(194, 194, 194);
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  background-color: rgb(235, 235, 235);
+}
+.userDetails {
+  display: flex;
+  align-items: center;
+  /* gap: 1rem; */
+}
+
+.avatarSingleChat {
+}
+.SingleImage {
+  height: 7rem;
+  width: 150px;
+}
