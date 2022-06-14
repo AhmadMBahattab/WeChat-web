@@ -22,7 +22,7 @@ function ChatInput() {
         <div className="emoji">
           <BsEmojiSmileFill
             size={25}
-            color="yellow"
+            color="gray"
             onClick={handleShowEmojiPicker}
           />
           {showEmoijiPicker && <Picker onEmojiClick={handleEmojiClick} />}
