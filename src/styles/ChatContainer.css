@@ -9,7 +9,7 @@
   border-bottom-color: rgb(194, 194, 194);
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  background-color: rgb(235, 235, 235);
+  /* background-color: rgb(235, 235, 235); */
 }
 .userDetails {
   display: flex;

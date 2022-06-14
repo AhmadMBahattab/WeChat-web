@@ -1,0 +1,55 @@
+.chatInputContainer {
+  background-color: rebeccapurple;
+  display: grid;
+  grid-template-columns: 5% 95%;
+  align-items: center;
+  padding: 5px;
+  height: 10%;
+}
+.inputButtonContainer {
+  display: flex;
+  align-items: center;
+  color: black;
+  gap: 1rem;
+}
+.emoji {
+  position: relative;
+  cursor: pointer;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+.emoji-picker-react {
+  position: absolute;
+  top: -370px;
+}
+.inputContainer {
+  width: 100%;
+
+  background-color: red;
+  display: flex;
+  align-content: center;
+  gap: 2rem;
+}
+.inputContainer input {
+  width: 90%;
+  height: 60%;
+  border: none;
+  padding-left: 1rem;
+  font-size: 1.2rem;
+}
+.inputContainer input::selection {
+  border: none;
+}
+.inputContainer input:focus {
+  border: none;
+}
+.inputContainer button {
+  padding: 0.3rem 2rem;
+  border-radius: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
