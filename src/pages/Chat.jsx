@@ -1,15 +1,20 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import { allUsersRoute } from "../utils/APIRoutes";
+
+import { allUsersRoute, host } from "../utils/APIRoutes";
 import Contacts from "../components/Contacts";
 import Welcome from "../components/Welcome";
 import ChatContainer from "../components/ChatContainer";
 import "../styles/Chat.css";
+import { io } from "socket.io-client";
 
 function Chat() {
+  const socket = useRef();
   const navigate = useNavigate();
+
+  // console.log(socket);
+
   const [contacts, setcontacts] = useState([]);
   const [currentUser, setcurrentUser] = useState(null);
   const [currentChat, setcurrentChat] = useState(undefined);
@@ -24,6 +29,12 @@ function Chat() {
       }
     };
     getCurrentUser();
+  }, []);
+  useEffect(() => {
+    if (currentUser) {
+      socket.current = io(host);
+      socket.current.emit("add-user", currentUser._id);
+    }
   }, []);
 
   useEffect(() => {
@@ -47,23 +58,31 @@ function Chat() {
     setcurrentChat(chat);
   };
   return (
-    <div className="chatContainer">
-      <div className="container">
-        <Contacts
-          contacts={contacts}
-          currentUser={currentUser}
-          changeChat={handleChatChange}
-        />
-        {currentChat === undefined ? (
-          <Welcome currentUser={currentUser} />
-        ) : (
-          <ChatContainer currentChat={currentChat} currentUser={currentUser} />
-          // <div>
-          //   <h1>cHAT PRESSED</h1>
-          // </div>
-        )}
-      </div>
-    </div>
+    <>
+      {socket && (
+        <div className="chatContainer">
+          <div className="container">
+            <Contacts
+              contacts={contacts}
+              currentUser={currentUser}
+              changeChat={handleChatChange}
+            />
+            {currentChat === undefined ? (
+              <Welcome currentUser={currentUser} />
+            ) : (
+              <ChatContainer
+                currentChat={currentChat}
+                currentUser={currentUser}
+                socket={socket}
+              />
+              // <div>
+              //   <h1>cHAT PRESSED</h1>
+              // </div>
+            )}
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 
