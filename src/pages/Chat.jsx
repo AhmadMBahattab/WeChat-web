@@ -20,7 +20,6 @@ function Chat() {
         console.log("From chat: ", "No user ");
         navigate("/Login");
       } else {
-        console.log("From chat: ", "User ");
         setcurrentUser(await JSON.parse(localStorage.getItem("chat-app-user")));
       }
     };
@@ -34,7 +33,7 @@ function Chat() {
           const { data: contacts } = await axios.get(
             `${allUsersRoute}/${currentUser._id}`
           );
-          console.log(contacts);
+
           setcontacts(contacts);
         } else {
           navigate("/setAvatar");
@@ -58,7 +57,7 @@ function Chat() {
         {currentChat === undefined ? (
           <Welcome currentUser={currentUser} />
         ) : (
-          <ChatContainer currentChat={currentChat} />
+          <ChatContainer currentChat={currentChat} currentUser={currentUser} />
           // <div>
           //   <h1>cHAT PRESSED</h1>
           // </div>

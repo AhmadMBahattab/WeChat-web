@@ -19,7 +19,6 @@ function Contacts({ contacts, currentUser, changeChat }) {
     changeChat(contact);
   };
 
-  console.log("From componrnts :", currentUser);
   return (
     <>
       {currentUserImage && currentUserName && (
@@ -60,7 +59,10 @@ function Contacts({ contacts, currentUser, changeChat }) {
               />
             </div>
             <div className="username">
-              <h2> <b>{currentUserName}</b></h2>
+              <h2>
+                {" "}
+                <b>{currentUserName}</b>
+              </h2>
             </div>
           </div>
         </div>
