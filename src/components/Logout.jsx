@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { BiPowerOff } from "react-icons/bi";
+import { MdLogout } from "react-icons/md";
 
 function Logout() {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ function Logout() {
       onClick={handleLogout}
       style={{ backgroundColor: "transparent", borderColor: "transparent" }}
     >
-      <BiPowerOff size={28} />
+      <MdLogout size={30} />
     </button>
   );
 }

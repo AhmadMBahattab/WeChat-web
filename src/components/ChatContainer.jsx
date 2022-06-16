@@ -21,7 +21,6 @@ function ChatContainer({ currentChat, currentUser, socket }) {
           to: currentChat._id,
         });
         setmessages(data);
-        console.log(data);
       }
     };
     getMessages();
@@ -42,12 +41,13 @@ function ChatContainer({ currentChat, currentUser, socket }) {
   }, [messages]);
 
   const handleSendMsg = async (msg) => {
+    // console.log(socket);
     await axios.post(addMessagesRoute, {
       from: currentUser._id,
       to: currentChat._id,
       message: msg,
     });
-    console.log(socket);
+
     socket.current.emit("send-msg", {
       from: currentUser._id,
       to: currentChat._id,

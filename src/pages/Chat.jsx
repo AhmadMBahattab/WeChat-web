@@ -57,31 +57,32 @@ function Chat() {
   const handleChatChange = (chat) => {
     setcurrentChat(chat);
   };
+
+  console.log(socket);
   return (
     <>
-      {socket && (
-        <div className="chatContainer">
-          <div className="container">
-            <Contacts
-              contacts={contacts}
-              currentUser={currentUser}
-              changeChat={handleChatChange}
-            />
-            {currentChat === undefined ? (
-              <Welcome currentUser={currentUser} />
-            ) : (
+      <div className="chatContainer">
+        <div className="container">
+          <Contacts
+            contacts={contacts}
+            currentUser={currentUser}
+            changeChat={handleChatChange}
+          />
+          {currentChat === undefined ? (
+            <Welcome currentUser={currentUser} />
+          ) : (
+            <>
+              {/* {socket.current !== undefined && ( */}
               <ChatContainer
                 currentChat={currentChat}
                 currentUser={currentUser}
                 socket={socket}
               />
-              // <div>
-              //   <h1>cHAT PRESSED</h1>
-              // </div>
-            )}
-          </div>
+              {/* )} */}
+            </>
+          )}
         </div>
-      )}
+      </div>
     </>
   );
 }
