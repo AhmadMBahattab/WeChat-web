@@ -13,8 +13,6 @@ function Chat() {
   const socket = useRef();
   const navigate = useNavigate();
 
-  // console.log(socket);
-
   const [contacts, setcontacts] = useState([]);
   const [currentUser, setcurrentUser] = useState(null);
   const [currentChat, setcurrentChat] = useState(undefined);
@@ -57,7 +55,7 @@ function Chat() {
   const handleChatChange = (chat) => {
     setcurrentChat(chat);
   };
-
+  console.log(io(host).connected);
   console.log(socket);
   return (
     <>
